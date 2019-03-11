@@ -1,0 +1,99 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>求助管理管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <#NameCon id="keyword" name="内容关键字" />
+                            </div>
+                            <div class="col-sm-2">
+                                <#TimeCon id="createTimeL" name="创建时间起始点" isTime="true" pattern="YYYY-MM-DD" />
+                            </div>
+                            <div class="col-sm-2">
+                                <#TimeCon id="createTimeR" name="创建时间结束点" isTime="true" pattern="YYYY-MM-DD" />
+                            </div>
+                            <div class="col-sm-2">
+                                <#TimeCon id="updateTimeL" name="更新时间起始点" isTime="true" pattern="YYYY-MM-DD" />
+                            </div>
+                            <div class="col-sm-2">
+                                <#TimeCon id="updateTimeR" name="更新时间结束点" isTime="true" pattern="YYYY-MM-DD" />
+                            </div>
+                            <div class="col-sm-2">
+                                <#button name="搜索" icon="fa-search" clickFun="Issues.search()"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <#SelectCon id="schoolId" name="学校" >
+                                    <option value="">全部</option>
+                                    @for(school in schools){
+                                    <option value="${school.id}">${school.name}</option>
+                                    @}
+                                </#SelectCon>
+                            </div>
+                            <div class="col-sm-2">
+                                <#SelectCon id="tabId" name="标签" >
+                                    <option value="">全部</option>
+                                    @for(tab in tabs){
+                                    <option value="${tab.id}">${tab.name}</option>
+                                    @}
+                                </#SelectCon>
+                            </div>
+                            <div class="col-sm-2">
+                                <#NameCon id="authorId" name="发布者" />
+                            </div>
+                            <div class="col-sm-2">
+                                <#NameCon id="solverId" name="解决人" />
+                            </div>
+                            <div class="col-sm-2">
+                                <#SelectCon id="powerStatus" name="安全状态" >
+                                    <option value="">全部</option>
+                                    <option value="0">冻结</option>
+                                    <option value="1">正常</option>
+                                </#SelectCon>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <#SelectCon id="waitOnline" name="是否在线等" >
+                                    <option value="">全部</option>
+                                    <option value="0">否</option>
+                                    <option value="1">是</option>
+                                </#SelectCon>
+                            </div>
+                            <div class="col-sm-2">
+                                <#SelectCon id="status" name="状态" >
+                                    <option value="">全部</option>
+                                    <option value="0">求助中</option>
+                                    <option value="1">委托中</option>
+                                    <option value="2">已完成任务，待确认</option>
+                                    <option value="3">交易完成</option>
+                                </#SelectCon>
+                            </div>
+                        </div>
+                        <div class="hidden-xs" id="IssuesTableToolbar" role="group">
+                            @if(shiro.hasPermission("/issues/add")){
+                            <#button name="添加" icon="fa-plus" clickFun="Issues.openAddIssues()"/>
+                            @}
+                            @if(shiro.hasPermission("/issues/update")){
+                            <#button name="修改" icon="fa-edit" clickFun="Issues.openIssuesDetail()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/issues/delete")){
+                            <#button name="删除" icon="fa-remove" clickFun="Issues.delete()" space="true"/>
+                            @}
+                        </div>
+                        <#table id="IssuesTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/issues/issues.js"></script>
+@}

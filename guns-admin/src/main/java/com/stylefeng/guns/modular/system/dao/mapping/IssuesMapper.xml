@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.modular.system.dao.IssuesMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="map">
+        <id column="id" property="id" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="content" property="content" />
+        <result column="wait_online" property="waitOnline" />
+        <result column="status" property="status" />
+        <result column="reward" property="reward" />
+        <result column="is_paid" property="isPaid" />
+        <result column="school_id" property="schoolId" />
+        <result column="author_id" property="authorId" />
+        <result column="solver_id" property="solverId" />
+        <result column="power_status" property="powerStatus" />
+        <result column="tab_id" property="tabId" />
+        <result column="paid_code" property="paidCode" />
+        <result column="imgs" property="imgs" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, create_time, update_time, content, wait_online, status, reward, is_paid, school_id, author_id, solver_id, power_status, tab_id, paid_code, imgs
+    </sql>
+
+    <select id="getIssueList" parameterType="com.stylefeng.guns.modular.system.model.GetIssueListRecDto"
+            resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        from issues as i
+        <where>
+            <if test="keyword != null and keyword !=''">
+              AND  i.content like CONCAT('%',#{keyword},'%')
+            </if>
+            <if test="createTimeL != null and createTimeL != ''">
+               AND i.create_time > #{createTimeL}
+            </if>
+            <if test="createTimeR != null and createTimeR != ''">
+                AND #{createTimeR} >i.create_time
+            </if>
+            <if test="updateTimeL != null and updateTimeL != ''">
+                AND i.update_time > #{updateTimeL}
+            </if>
+            <if test="updateTimeR != null and updateTimeR != ''">
+                AND #{updateTimeR} >i.update_time
+            </if>
+            <if test="waitOnline != null ">
+                AND i.wait_online=#{waitOnline}
+            </if>
+            <if test="status != null ">
+                AND i.status=#{status}
+            </if>
+            <if test="schoolId != null ">
+                AND i.school_id=#{schoolId}
+            </if>
+            <if test="tabId != null ">
+                AND i.tab_id=#{tabId}
+            </if>
+            <if test="powerStatus != null ">
+                AND i.power_status=#{powerStatus}
+            </if>
+            <if test="authorId != null ">
+                AND i.author_id=#{authorId}
+            </if>
+            <if test="solverId != null ">
+                AND i.solver_id=#{solverId}
+            </if>
+        </where>
+    </select>
+</mapper>
