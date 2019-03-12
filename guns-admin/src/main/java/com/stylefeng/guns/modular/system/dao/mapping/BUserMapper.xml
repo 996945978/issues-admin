@@ -3,7 +3,7 @@
 <mapper namespace="com.stylefeng.guns.modular.system.dao.BUserMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.stylefeng.guns.modular.system.model.BUser">
+    <resultMap id="BaseResultMap" type="map">
         <id column="id" property="id" />
         <result column="name" property="name" />
         <result column="create_time" property="createTime" />
@@ -31,4 +31,48 @@
         id, name, create_time, update_time, sex, mobile, school_id, dorm, birthday, balance, chat_head, status, salt, password, oppen_id, activation, sign, student_no, student_pwd, student_auth
     </sql>
 
+    <select id="listBy" parameterType="com.stylefeng.guns.modular.system.model.dto.GetBUserListDto"
+            resultMap="BaseResultMap">
+        SELECT
+      <include refid="Base_Column_List"/>
+        from b_user as u
+        <where>
+            <if test="createTimeL != null and createTimeL != ''">
+                AND u.create_time > #{createTimeL}
+            </if>
+            <if test="createTimeR != null and createTimeR != ''">
+                AND #{createTimeR} >u.create_time
+            </if>
+            <if test="updateTimeL != null and updateTimeL != ''">
+                AND u.update_time > #{updateTimeL}
+            </if>
+            <if test="updateTimeR != null and updateTimeR != ''">
+                AND #{updateTimeR} >u.update_time
+            </if>
+            <if test="status != null ">
+                AND u.status=#{status}
+            </if>
+            <if test="schoolId != null ">
+                AND u.school_id=#{schoolId}
+            </if>
+            <if test="name != null and name != ''">
+                AND u.name like CONCAT('%',#{name})
+            </if>
+            <if test="sex != null ">
+                AND u.sex=#{sex}
+            </if>
+            <if test="mobile != null and mobile != ''">
+                AND u.mobile like CONCAT('%',#{mobile})
+            </if>
+            <if test="dorm != null and dorm != ''">
+                AND u.dorm=#{dorm}
+            </if>
+            <if test="studentNo != null and studentNo != ''">
+                AND u.student_no=#{studentNo}
+            </if>
+            <if test="studentAuth != null ">
+                AND u.student_auth=#{studentAuth}
+            </if>
+        </where>
+    </select>
 </mapper>

@@ -1,6 +1,11 @@
 package com.stylefeng.guns.modular.system.controller;
 
 import com.stylefeng.guns.core.base.controller.BaseController;
+import com.stylefeng.guns.modular.system.model.School;
+import com.stylefeng.guns.modular.system.model.Tab;
+import com.stylefeng.guns.modular.system.model.dto.GetBUserListDto;
+import com.stylefeng.guns.modular.system.service.ISchoolService;
+import com.stylefeng.guns.modular.system.warpper.BUserWrapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -12,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.stylefeng.guns.modular.system.model.BUser;
 import com.stylefeng.guns.modular.system.service.IBUserService;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * 用户管理控制器
  *
@@ -21,6 +29,8 @@ import com.stylefeng.guns.modular.system.service.IBUserService;
 @Controller
 @RequestMapping("/bUser")
 public class BUserController extends BaseController {
+    @Autowired
+    ISchoolService iSchoolService;
 
     private String PREFIX = "/system/bUser/";
 
@@ -31,7 +41,9 @@ public class BUserController extends BaseController {
      * 跳转到用户管理首页
      */
     @RequestMapping("")
-    public String index() {
+    public String index(Model model) {
+        List<School> schools = iSchoolService.selectNormalList();
+        model.addAttribute("schools",schools);
         return PREFIX + "bUser.html";
     }
 
@@ -39,7 +51,9 @@ public class BUserController extends BaseController {
      * 跳转到添加用户管理
      */
     @RequestMapping("/bUser_add")
-    public String bUserAdd() {
+    public String bUserAdd(Model model) {
+        List<School> schools = iSchoolService.selectNormalList();
+        model.addAttribute("schools",schools);
         return PREFIX + "bUser_add.html";
     }
 
@@ -49,6 +63,8 @@ public class BUserController extends BaseController {
     @RequestMapping("/bUser_update/{bUserId}")
     public String bUserUpdate(@PathVariable Integer bUserId, Model model) {
         BUser bUser = bUserService.selectById(bUserId);
+        List<School> schools = iSchoolService.selectNormalList();
+        model.addAttribute("schools",schools);
         model.addAttribute("item",bUser);
         LogObjectHolder.me().set(bUser);
         return PREFIX + "bUser_edit.html";
@@ -59,8 +75,9 @@ public class BUserController extends BaseController {
      */
     @RequestMapping(value = "/list")
     @ResponseBody
-    public Object list(String condition) {
-        return bUserService.selectList(null);
+    public Object list(GetBUserListDto M, Model model) {
+        List<Map<String,Object>> users = bUserService.listBy(M);
+        return new BUserWrapper(users).warp();
     }
 
     /**

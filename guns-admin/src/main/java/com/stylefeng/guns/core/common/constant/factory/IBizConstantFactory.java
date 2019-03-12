@@ -20,5 +20,9 @@ public interface IBizConstantFactory {
 
     String getUserNameById(Integer id);
 
+    String getSexName(Integer sex);
 
+    Object getStudentAuthName(Integer studentAuth);
+
+    Object getStopStatus(Integer status);
 }

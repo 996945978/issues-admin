@@ -23,6 +23,8 @@ public class IssueWrapper extends BaseControllerWarpper {
     protected void warpTheMap(Map<String, Object> map) {
         map.put("tabName",BizConstantFactory.me().getTabNameById((Integer)map.get("tabId")));
         map.put("schoolName",BizConstantFactory.me().getSchoolNameById((Integer)map.get("schoolId")));
+        map.put("userName",BizConstantFactory.me().getUserNameById((Integer)map.get("authorId")));
+
         //TODO 用户名获取
     }
 }

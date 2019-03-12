@@ -106,7 +106,9 @@ BUserInfoDlg.editSubmit = function() {
     ajax.set(this.bUserInfoData);
     ajax.start();
 }
-
 $(function() {
-
+    $("#schoolId").val($("#schoolValue").val());
+    $("#sex").val($("#sexValue").val());
+    $("#status").val($("#statusValue").val());
+    $("#studentAuth").val($("#studentAuthValue").val())
 });

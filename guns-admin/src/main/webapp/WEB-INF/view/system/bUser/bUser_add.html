@@ -5,29 +5,42 @@
 
             <div class="row">
                 <div class="col-sm-6 b-r">
-                            <#input id="id" name="自增主键" underline="true"/>
-                            <#input id="name" name="昵称" underline="true"/>
-                            <#input id="createTime" name="创建日期" underline="true"/>
-                            <#input id="updateTime" name="更新时间" underline="true"/>
-                            <#input id="sex" name="性别。0：男，1：女" underline="true"/>
-                            <#input id="mobile" name="电话" underline="true"/>
-                            <#input id="schoolId" name="学校id" underline="true"/>
-                            <#input id="dorm" name="宿舍" underline="true"/>
-                            <#input id="birthday" name="生日" underline="true"/>
-                            <#input id="balance" name="余额"/>
+                    <#input id="id" name="自增主键" disabled="disabled" underline="true"/>
+                    <#input id="name" name="昵称" underline="true"/>
+                    <#input id="createTime" name="创建日期" underline="true" type="text" clickFun="laydate({istime:true,format:'YYYY-MM-DD hh:mm:ss'})" />
+                    <#input id="updateTime" name="更新时间" underline="true" type="text" clickFun="laydate({istime:true,format:'YYYY-MM-DD hh:mm:ss'})" />
+                    <#select id="sex" name="性别" underline="true">
+                        <option value="0">男</option>
+                        <option value="1">女</option>
+                    </#select>
+                    <#input id="mobile" name="电话" underline="true"/>
+                    <#select id="schoolId" name="学校" underline="true">
+                        @for(school in schools){
+                        <option value="${school.id}">${school.name}</option>
+                        @}
+                    </#select>
+                    <#input id="dorm" name="宿舍" underline="true"/>
+                    <#input id="birthday" name="生日" underline="true" type="text" clickFun="laydate({istime:true,format:'YYYY-MM-DD hh:mm:ss'})" />
+                    <#input id="balance" name="余额"/>
                 </div>
 
                 <div class="col-sm-6">
-                            <#input id="chatHead" name="头像地址" underline="true"/>
-                            <#input id="status" name="状态。0：正常，1：冻结" underline="true"/>
-                            <#input id="salt" name="密码盐" underline="true"/>
-                            <#input id="password" name="密码" underline="true"/>
-                            <#input id="oppenId" name="" underline="true"/>
-                            <#input id="activation" name="活跃度" underline="true"/>
-                            <#input id="sign" name="签名" underline="true"/>
-                            <#input id="studentNo" name="学号" underline="true"/>
-                            <#input id="studentPwd" name="学号对应的密码" underline="true"/>
-                            <#input id="studentAuth" name="是否学生认证。0：否，1：是" underline="true"/>
+                    <#input id="chatHead" name="头像地址" underline="true"/>
+                    <#select id="status" name="状态。0：正常，1：冻结" underline="true">
+                        <option value="0">正常</option>
+                        <option value="1">冻结</option>
+                    </#select>
+                    <#input id="salt" name="密码盐" underline="true"/>
+                    <#input id="password" name="密码" underline="true"/>
+                    <#input id="oppenId" name="" underline="true"/>
+                    <#input id="activation" name="活跃度" underline="true"/>
+                    <#text id="sign" name="签名" underline="true"/>
+                    <#input id="studentNo" name="学号" underline="true"/>
+                    <#input id="studentPwd" name="学号对应的密码" underline="true"/>
+                    <#select id="studentAuth" name="学生认证" underline="true">
+                        <option value="0">否</option>
+                        <option value="1">是</option>
+                    </#select>
                 </div>
             </div>
 
@@ -42,4 +55,25 @@
     </div>
 </div>
 <script src="${ctxPath}/static/modular/system/bUser/bUser_info.js"></script>
+<script>
+    var d = new Date();
+    laydate.render({
+        elem: '#createTime'
+        , value: d.getFullYear() + '-' + lay.digit(d.getMonth() + 1) + '-' + lay.digit(d.getDate())
+    });
+</script>
+<script>
+    var d = new Date();
+    laydate.render({
+        elem: '#updateTime'
+        , value: d.getFullYear() + '-' + lay.digit(d.getMonth() + 1) + '-' + lay.digit(d.getDate())
+    });
+</script>
+<script>
+    var d = new Date();
+    laydate.render({
+        elem: '#birthday'
+        , value: d.getFullYear() + '-' + lay.digit(d.getMonth() + 1) + '-' + lay.digit(d.getDate())
+    });
+</script>
 @}

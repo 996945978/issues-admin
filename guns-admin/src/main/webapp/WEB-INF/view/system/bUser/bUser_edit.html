@@ -5,29 +5,47 @@
 
             <div class="row">
                 <div class="col-sm-6 b-r">
-                            <#input id="id" name="自增主键" value="${item.id}" underline="true"/>
-                            <#input id="name" name="昵称" value="${item.name}" underline="true"/>
-                            <#input id="createTime" name="创建日期" value="${item.createTime}" underline="true"/>
-                            <#input id="updateTime" name="更新时间" value="${item.updateTime}" underline="true"/>
-                            <#input id="sex" name="性别。0：男，1：女" value="${item.sex}" underline="true"/>
-                            <#input id="mobile" name="电话" value="${item.mobile}" underline="true"/>
-                            <#input id="schoolId" name="学校id" value="${item.schoolId}" underline="true"/>
-                            <#input id="dorm" name="宿舍" value="${item.dorm}" underline="true"/>
-                            <#input id="birthday" name="生日" value="${item.birthday}" underline="true"/>
-                            <#input id="balance" name="余额" value="${item.balance}" />
-                </div>
+                    <input type="hidden" id="schoolValue" value="${item.schoolId}">
+                    <input type="hidden" id="sexValue" value="${item.sex}">
+                    <input type="hidden" id="statusValue" value="${item.status}">
+                    <input type="hidden" id="studentAuthValue" value="${item.studentAuth}">
 
+
+                    <#input id="id" name="自增主键" value="${item.id}" underline="true" disabled="disabled"/>
+                    <#input id="name" name="昵称" value="${item.name}" underline="true"/>
+                    <#input id="createTime" name="创建日期" value="${item.createTime}" underline="true" type="text" clickFun="laydate({istime:true,format:'YYYY-MM-DD hh:mm:ss'})" />
+                    <#input id="updateTime" name="更新时间" value="${item.updateTime}" underline="true" type="text" clickFun="laydate({istime:true,format:'YYYY-MM-DD hh:mm:ss'})" />
+                    <#select id="sex" name="性别" underline="true">
+                        <option value="0">男</option>
+                        <option value="1">女</option>
+                    </#select>
+                    <#input id="mobile" name="电话" value="${item.mobile}" underline="true"/>
+                    <#select id="schoolId" name="学校" underline="true">
+                        @for(school in schools){
+                        <option value="${school.id}">${school.name}</option>
+                        @}
+                    </#select>
+                    <#input id="dorm" name="宿舍" value="${item.dorm}" underline="true"/>
+                    <#input id="birthday" name="生日" value="${item.birthday}" underline="true" type="text" clickFun="laydate({istime:true,format:'YYYY-MM-DD hh:mm:ss'})" />
+                    <#input id="balance" name="余额" value="${item.balance}" />
+                </div>
                 <div class="col-sm-6">
-                            <#input id="chatHead" name="头像地址" value="${item.chatHead}" underline="true"/>
-                            <#input id="status" name="状态。0：正常，1：冻结" value="${item.status}" underline="true"/>
-                            <#input id="salt" name="密码盐" value="${item.salt}" underline="true"/>
-                            <#input id="password" name="密码" value="${item.password}" underline="true"/>
-                            <#input id="oppenId" name="" value="${item.oppenId}" underline="true"/>
-                            <#input id="activation" name="活跃度" value="${item.activation}" underline="true"/>
-                            <#input id="sign" name="签名" value="${item.sign}" underline="true"/>
-                            <#input id="studentNo" name="学号" value="${item.studentNo}" underline="true"/>
-                            <#input id="studentPwd" name="学号对应的密码" value="${item.studentPwd}" underline="true"/>
-                            <#input id="studentAuth" name="是否学生认证。0：否，1：是" value="${item.studentAuth}" />
+                    <#input id="chatHead" name="头像地址" value="${item.chatHead}" underline="true"/>
+                    <#select id="status" name="状态" underline="true">
+                        <option value="0">正常</option>
+                        <option value="1">冻结</option>
+                    </#select>
+                    <#input id="salt" name="密码盐" value="${item.salt}" underline="true"/>
+                    <#input id="password" name="密码" value="${item.password}" underline="true"/>
+                    <#input id="oppenId" name="" value="${item.oppenId}" underline="true"/>
+                    <#input id="activation" name="活跃度" value="${item.activation}" underline="true"/>
+                    <#input id="sign" name="签名" value="${item.sign}" underline="true"/>
+                    <#input id="studentNo" name="学号" value="${item.studentNo}" underline="true"/>
+                    <#input id="studentPwd" name="学号对应的密码" value="${item.studentPwd}" underline="true"/>
+                    <#select id="studentAuth" name="学生认证" underline="true">
+                        <option value="0">否</option>
+                        <option value="1">是</option>
+                    </#select>
                 </div>
             </div>
 
@@ -42,4 +60,20 @@
     </div>
 </div>
 <script src="${ctxPath}/static/modular/system/bUser/bUser_info.js"></script>
+<script>
+    laydate.render({
+        elem: '#createTime'
+    });
+</script>
+<script>
+    laydate.render({
+        elem: '#updateTime'
+    });
+</script>
+<script>
+    laydate.render({
+        elem: '#birthday'
+
+    });
+</script>
 @}

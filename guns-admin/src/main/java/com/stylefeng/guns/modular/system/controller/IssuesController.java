@@ -47,7 +47,7 @@ public class IssuesController extends BaseController {
      */
     @RequestMapping("")
     public String index(Model model) {
-        List<School> schools = iSchoolService.selectList(null);
+        List<School> schools = iSchoolService.selectNormalList();
         List<Tab> tabs = iTabService.selectList(null);
         model.addAttribute("schools",schools);
         model.addAttribute("tabs",tabs);
@@ -59,7 +59,7 @@ public class IssuesController extends BaseController {
      */
     @RequestMapping("/issues_add")
     public String issuesAdd(Model model) {
-        List<School> schools = iSchoolService.selectList(null);
+        List<School> schools = iSchoolService.selectNormalList();
         List<Tab> tabs = iTabService.selectList(null);
         model.addAttribute("schools",schools);
         model.addAttribute("tabs",tabs);
@@ -72,7 +72,7 @@ public class IssuesController extends BaseController {
     @RequestMapping("/issues_update/{issuesId}")
     public String issuesUpdate(@PathVariable Integer issuesId, Model model) {
         Issues issues = issuesService.selectById(issuesId);
-        List<School> schools = iSchoolService.selectList(null);
+        List<School> schools = iSchoolService.selectNormalList();
         List<Tab> tabs = iTabService.selectList(null);
         model.addAttribute("schools",schools);
         model.addAttribute("tabs",tabs);
@@ -88,7 +88,7 @@ public class IssuesController extends BaseController {
     @ResponseBody
     public Object list(GetIssueListRecDto M,Model model) {
         List<Map<String,Object>> issues =  issuesService.getIssueList(M);
-        List<School> schools = iSchoolService.selectList(null);
+        List<School> schools = iSchoolService.selectNormalList();
         List<Tab> tabs = iTabService.selectList(null);
         model.addAttribute("schools",schools);
         model.addAttribute("tabs",tabs);

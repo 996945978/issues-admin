@@ -18,22 +18,22 @@ BUser.initColumn = function () {
             {title: '昵称', field: 'name', visible: true, align: 'center', valign: 'middle'},
             {title: '创建日期', field: 'createTime', visible: true, align: 'center', valign: 'middle'},
             {title: '更新时间', field: 'updateTime', visible: true, align: 'center', valign: 'middle'},
-            {title: '性别。0：男，1：女', field: 'sex', visible: true, align: 'center', valign: 'middle'},
+            {title: '性别', field: 'sexValue', visible: true, align: 'center', valign: 'middle'},
             {title: '电话', field: 'mobile', visible: true, align: 'center', valign: 'middle'},
-            {title: '学校id', field: 'schoolId', visible: true, align: 'center', valign: 'middle'},
+            {title: '学校', field: 'schoolName', visible: true, align: 'center', valign: 'middle'},
             {title: '宿舍', field: 'dorm', visible: true, align: 'center', valign: 'middle'},
             {title: '生日', field: 'birthday', visible: true, align: 'center', valign: 'middle'},
             {title: '余额', field: 'balance', visible: true, align: 'center', valign: 'middle'},
             {title: '头像地址', field: 'chatHead', visible: true, align: 'center', valign: 'middle'},
-            {title: '状态。0：正常，1：冻结', field: 'status', visible: true, align: 'center', valign: 'middle'},
+            {title: '状态', field: 'statusValue', visible: true, align: 'center', valign: 'middle'},
             {title: '密码盐', field: 'salt', visible: true, align: 'center', valign: 'middle'},
             {title: '密码', field: 'password', visible: true, align: 'center', valign: 'middle'},
-            {title: '', field: 'oppenId', visible: true, align: 'center', valign: 'middle'},
+            {title: 'oppenId', field: 'oppenId', visible: true, align: 'center', valign: 'middle'},
             {title: '活跃度', field: 'activation', visible: true, align: 'center', valign: 'middle'},
             {title: '签名', field: 'sign', visible: true, align: 'center', valign: 'middle'},
             {title: '学号', field: 'studentNo', visible: true, align: 'center', valign: 'middle'},
             {title: '学号对应的密码', field: 'studentPwd', visible: true, align: 'center', valign: 'middle'},
-            {title: '是否学生认证。0：否，1：是', field: 'studentAuth', visible: true, align: 'center', valign: 'middle'}
+            {title: '学生认证', field: 'studentAuthValue', visible: true, align: 'center', valign: 'middle'}
     ];
 };
 
@@ -104,7 +104,19 @@ BUser.delete = function () {
  */
 BUser.search = function () {
     var queryData = {};
-    queryData['condition'] = $("#condition").val();
+    queryData['name'] = $("#name").val();
+    queryData['createTimeL'] = $("#createTimeL").val();
+    queryData['createTimeR'] = $("#createTimeR").val();
+    queryData['updateTimeL'] = $("#updateTimeL").val();
+    queryData['updateTimeR'] = $("#updateTimeR").val();
+    queryData['schoolId'] = $("#schoolId").val();
+    queryData['status'] = $("#status").val();
+    queryData['sex'] = $("#sex").val();
+    queryData['mobile'] = $("#mobile").val();
+    queryData['dorm'] = $("#dorm").val();
+    queryData['studentNo'] = $("#studentNo").val();
+    queryData['studentAuth'] = $("#studentAuth").val();
+
     BUser.table.refresh({query: queryData});
 };
 

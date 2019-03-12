@@ -23,7 +23,7 @@ Issues.initColumn = function () {
             {title: '赏金数量。保留小数点后两位', field: 'reward', visible: true, align: 'center', valign: 'middle'},
             {title: '是否支付，0：否，1：是', field: 'isPaid', visible: true, align: 'center', valign: 'middle'},
             {title: '学校', field: 'schoolName', visible: true, align: 'center', valign: 'middle'},
-            {title: '发布人', field: 'authorId', visible: true, align: 'center', valign: 'middle'},
+            {title: '发布人', field: 'userName', visible: true, align: 'center', valign: 'middle'},
             {title: '解决人id', field: 'solverId', visible: true, align: 'center', valign: 'middle'},
             {title: '0：冻结，1：正常', field: 'powerStatus', visible: true, align: 'center', valign: 'middle'},
             {title: '标签', field: 'tabName', visible: true, align: 'center', valign: 'middle'},

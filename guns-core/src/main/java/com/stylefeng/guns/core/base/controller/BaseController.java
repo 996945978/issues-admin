@@ -6,6 +6,7 @@ import com.stylefeng.guns.core.base.warpper.BaseControllerWarpper;
 import com.stylefeng.guns.core.page.PageInfoBT;
 import com.stylefeng.guns.core.support.HttpKit;
 import com.stylefeng.guns.core.util.FileUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

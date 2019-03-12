@@ -21,6 +21,13 @@ public class BUser extends Model<BUser> {
 
     private static final long serialVersionUID = 1L;
 
+    public BUser() {
+    }
+
+    public BUser(Integer id) {
+        this.id = id;
+    }
+
     /**
      * 自增主键
      */

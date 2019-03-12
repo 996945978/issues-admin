@@ -2,6 +2,10 @@ package com.stylefeng.guns.modular.system.dao;
 
 import com.stylefeng.guns.modular.system.model.BUser;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
+import com.stylefeng.guns.modular.system.model.dto.GetBUserListDto;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -13,4 +17,5 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  */
 public interface BUserMapper extends BaseMapper<BUser> {
 
+    List<Map<String,Object>> listBy(GetBUserListDto m);
 }
