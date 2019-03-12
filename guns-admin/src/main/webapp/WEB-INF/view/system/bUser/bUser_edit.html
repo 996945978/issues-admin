@@ -1,0 +1,45 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="id" name="自增主键" value="${item.id}" underline="true"/>
+                            <#input id="name" name="昵称" value="${item.name}" underline="true"/>
+                            <#input id="createTime" name="创建日期" value="${item.createTime}" underline="true"/>
+                            <#input id="updateTime" name="更新时间" value="${item.updateTime}" underline="true"/>
+                            <#input id="sex" name="性别。0：男，1：女" value="${item.sex}" underline="true"/>
+                            <#input id="mobile" name="电话" value="${item.mobile}" underline="true"/>
+                            <#input id="schoolId" name="学校id" value="${item.schoolId}" underline="true"/>
+                            <#input id="dorm" name="宿舍" value="${item.dorm}" underline="true"/>
+                            <#input id="birthday" name="生日" value="${item.birthday}" underline="true"/>
+                            <#input id="balance" name="余额" value="${item.balance}" />
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="chatHead" name="头像地址" value="${item.chatHead}" underline="true"/>
+                            <#input id="status" name="状态。0：正常，1：冻结" value="${item.status}" underline="true"/>
+                            <#input id="salt" name="密码盐" value="${item.salt}" underline="true"/>
+                            <#input id="password" name="密码" value="${item.password}" underline="true"/>
+                            <#input id="oppenId" name="" value="${item.oppenId}" underline="true"/>
+                            <#input id="activation" name="活跃度" value="${item.activation}" underline="true"/>
+                            <#input id="sign" name="签名" value="${item.sign}" underline="true"/>
+                            <#input id="studentNo" name="学号" value="${item.studentNo}" underline="true"/>
+                            <#input id="studentPwd" name="学号对应的密码" value="${item.studentPwd}" underline="true"/>
+                            <#input id="studentAuth" name="是否学生认证。0：否，1：是" value="${item.studentAuth}" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="BUserInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="BUserInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/bUser/bUser_info.js"></script>
+@}

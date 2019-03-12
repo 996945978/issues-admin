@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.modular.system.dao.BUserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.stylefeng.guns.modular.system.model.BUser">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="sex" property="sex" />
+        <result column="mobile" property="mobile" />
+        <result column="school_id" property="schoolId" />
+        <result column="dorm" property="dorm" />
+        <result column="birthday" property="birthday" />
+        <result column="balance" property="balance" />
+        <result column="chat_head" property="chatHead" />
+        <result column="status" property="status" />
+        <result column="salt" property="salt" />
+        <result column="password" property="password" />
+        <result column="oppen_id" property="oppenId" />
+        <result column="activation" property="activation" />
+        <result column="sign" property="sign" />
+        <result column="student_no" property="studentNo" />
+        <result column="student_pwd" property="studentPwd" />
+        <result column="student_auth" property="studentAuth" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, name, create_time, update_time, sex, mobile, school_id, dorm, birthday, balance, chat_head, status, salt, password, oppen_id, activation, sign, student_no, student_pwd, student_auth
+    </sql>
+
+</mapper>

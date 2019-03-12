@@ -1,0 +1,45 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="id" name="自增主键" underline="true"/>
+                            <#input id="name" name="昵称" underline="true"/>
+                            <#input id="createTime" name="创建日期" underline="true"/>
+                            <#input id="updateTime" name="更新时间" underline="true"/>
+                            <#input id="sex" name="性别。0：男，1：女" underline="true"/>
+                            <#input id="mobile" name="电话" underline="true"/>
+                            <#input id="schoolId" name="学校id" underline="true"/>
+                            <#input id="dorm" name="宿舍" underline="true"/>
+                            <#input id="birthday" name="生日" underline="true"/>
+                            <#input id="balance" name="余额"/>
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="chatHead" name="头像地址" underline="true"/>
+                            <#input id="status" name="状态。0：正常，1：冻结" underline="true"/>
+                            <#input id="salt" name="密码盐" underline="true"/>
+                            <#input id="password" name="密码" underline="true"/>
+                            <#input id="oppenId" name="" underline="true"/>
+                            <#input id="activation" name="活跃度" underline="true"/>
+                            <#input id="sign" name="签名" underline="true"/>
+                            <#input id="studentNo" name="学号" underline="true"/>
+                            <#input id="studentPwd" name="学号对应的密码" underline="true"/>
+                            <#input id="studentAuth" name="是否学生认证。0：否，1：是" underline="true"/>
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="BUserInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="BUserInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/bUser/bUser_info.js"></script>
+@}
