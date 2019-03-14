@@ -1,0 +1,56 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                    <input type="hidden" id="schoolValue" value="${item.schoolId}">
+                    <input type="hidden" id="tabValue" value="${item.tabId}">
+
+                    <#input id="id" name="id" value="${item.id}" underline="true" disabled="disabled"/>
+                    <#text id="content" name="内容" value="${item.content}" underline="true"/>
+                    <#input id="status" name="状态。0：正常，1：过期" value="${item.status}" underline="true"/>
+                    <#input id="createTime" name="创建时间" value="${item.createTime}" underline="true" type="text" clickFun="laydate({istime:true,format:'YYYY-MM-DD hh:mm:ss'})" />
+                    <#input id="updateTime" name="更新时间" value="${item.updateTime}" type="text" clickFun="laydate({istime:true,format:'YYYY-MM-DD hh:mm:ss'})" />
+                </div>
+
+                <div class="col-sm-6">
+                    <#input id="authorId" name="发布者id" value="${item.authorId}" underline="true"/>
+                    <#select id="tabId" name="标签" underline="true">
+                        @for (tab in tabs) {
+                        <option value="${tab.id}">${tab.name}</option>
+                        @}
+                    </#select>
+                    <#select id="schoolId" name="学校" underline="true">
+                        @for(school in schools){
+                        <option value="${school.id}">${school.name}</option>
+                        @}
+                    </#select>
+                    <#input id="money" name="售价" value="${item.money}" underline="true"/>
+                    <#input id="imgs" name="图片链接。多个链接用英文“，”隔开" value="${item.imgs}" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="SkillInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="SkillInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/skill/skill_info.js"></script>
+<script>
+    laydate.render({
+        elem: '#createTime'
+    });
+</script>
+<script>
+    laydate.render({
+        elem: '#updateTime'
+    });
+</script>
+@}

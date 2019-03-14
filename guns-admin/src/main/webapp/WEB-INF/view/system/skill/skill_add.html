@@ -1,0 +1,60 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                    <#input id="id" name="id" underline="true" disabled="disabled"/>
+                    <#text id="content" name="内容" underline="true"/>
+                    <#select id="status" name="状态" underline="true">
+                        <option value="0">正常</option>
+                        <option value="1">过期</option>
+                    </#select>
+                    <#input id="createTime" name="创建时间" underline="true" type="text" clickFun="laydate({istime:true,format:'YYYY-MM-DD hh:mm:ss'})"/>
+                    <#input id="updateTime" name="修改时间" underline="true" type="text" clickFun="laydate({istime:true,format:'YYYY-MM-DD hh:mm:ss'})"/>
+                </div>
+
+                <div class="col-sm-6">
+                    <#input id="authorId" name="发布者" underline="true"/>
+                    <#select id="tabId" name="标签" underline="true">
+                        @for (tab in tabs) {
+                        <option value="${tab.id}">${tab.name}</option>
+                        @}
+                    </#select>
+                    <#select id="schoolId" name="学校" underline="true">
+                        @for (school in schools) {
+                        <option value="${school.id}">${school.name}</option>
+                        @}
+                    </#select>
+                    <#input id="money" name="售价" underline="true"/>
+                    <#input id="imgs" name="图片链接。多个链接用英文“，”隔开" underline="true"/>
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="SkillInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="SkillInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/skill/skill_info.js"></script>
+<script>
+    var d = new Date();
+    laydate.render({
+        elem: '#createTime'
+        , value: d.getFullYear() + '-' + lay.digit(d.getMonth() + 1) + '-' + lay.digit(d.getDate())
+    });
+</script>
+<script>
+    var d = new Date();
+    laydate.render({
+        elem: '#updateTime'
+        , value: d.getFullYear() + '-' + lay.digit(d.getMonth() + 1) + '-' + lay.digit(d.getDate())
+    });
+</script>
+@}
