@@ -15,20 +15,20 @@ Issues.initColumn = function () {
     return [
         {field: 'selectItem', radio: true},
             {title: 'id', field: 'id', visible: true, align: 'center', valign: 'middle'},
-            {title: '创建时间', field: 'createTime', visible: true, align: 'center', valign: 'middle'},
-            {title: '修改时间', field: 'updateTime', visible: true, align: 'center', valign: 'middle'},
+            {title: '创建', field: 'createTime', visible: true, align: 'center', valign: 'middle'},
+            {title: '修改', field: 'updateTime', visible: true, align: 'center', valign: 'middle'},
             {title: '内容', field: 'content', visible: true, align: 'center', valign: 'middle'},
-            {title: '是否在线等。0：否，1：是', field: 'waitOnline', visible: true, align: 'center', valign: 'middle'},
-            {title: '状态。0：求助中，1：委托中，2：已完成，待买家确认，3：交易完成', field: 'status', visible: true, align: 'center', valign: 'middle'},
-            {title: '赏金数量。保留小数点后两位', field: 'reward', visible: true, align: 'center', valign: 'middle'},
-            {title: '是否支付，0：否，1：是', field: 'isPaid', visible: true, align: 'center', valign: 'middle'},
+            {title: '在线等', field: 'waitOnlineValue', visible: true, align: 'center', valign: 'middle'},
+            {title: '求助状态', field: 'statusValue', visible: true, align: 'center', valign: 'middle'},
+            {title: '赏金', field: 'reward', visible: true, align: 'center', valign: 'middle'},
+            {title: '支付', field: 'isPaidValue', visible: true, align: 'center', valign: 'middle'},
             {title: '学校', field: 'schoolName', visible: true, align: 'center', valign: 'middle'},
             {title: '发布人', field: 'userName', visible: true, align: 'center', valign: 'middle'},
             {title: '解决人id', field: 'solverId', visible: true, align: 'center', valign: 'middle'},
-            {title: '0：冻结，1：正常', field: 'powerStatus', visible: true, align: 'center', valign: 'middle'},
+            {title: '状态', field: 'powerStatusValue', visible: true, align: 'center', valign: 'middle'},
             {title: '标签', field: 'tabName', visible: true, align: 'center', valign: 'middle'},
-            {title: '微信支付凭证', field: 'paidCode', visible: true, align: 'center', valign: 'middle'},
-            {title: '图片链接。多个链接用英文“，”隔开', field: 'imgs', visible: true, align: 'center', valign: 'middle'}
+            {title: '支付凭证', field: 'paidCode', visible: true, align: 'center', valign: 'middle'},
+            {title: '图片', field: 'imgs', visible: true, align: 'center', valign: 'middle'}
     ];
 };
 
@@ -111,6 +111,7 @@ Issues.search = function () {
     queryData['authorId'] = $("#authorId").val();
     queryData['solverId'] = $("#solverId").val();
     queryData['powerStatus'] = $("#powerStatus").val();
+    queryData['id'] = $("#id").val();
 
     Issues.table.refresh({query: queryData});
 };

@@ -116,6 +116,7 @@ BUser.search = function () {
     queryData['dorm'] = $("#dorm").val();
     queryData['studentNo'] = $("#studentNo").val();
     queryData['studentAuth'] = $("#studentAuth").val();
+    queryData['id'] = $("#id").val();
 
     BUser.table.refresh({query: queryData});
 };

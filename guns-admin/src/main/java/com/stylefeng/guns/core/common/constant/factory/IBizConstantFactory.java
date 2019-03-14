@@ -22,7 +22,13 @@ public interface IBizConstantFactory {
 
     String getSexName(Integer sex);
 
-    Object getStudentAuthName(Integer studentAuth);
+    String getStudentAuthName(Integer studentAuth);
 
-    Object getStopStatus(Integer status);
+    String getStopStatus(Integer status);
+
+    String getWaitOnLineValue(Integer waitOnline);
+
+    String getPaidValue(Integer isPaid);
+
+    String getStatusValue(Integer status);
 }

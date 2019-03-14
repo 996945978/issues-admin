@@ -5,8 +5,8 @@
             <div class="row">
                 <div class="col-sm-6 b-r">
                     <#input id="id" name="id" value="${item.id}" underline="true" disabled="disabled"/>
-                    <#input id="createTime" name="创建时间" value="${item.createTime}" underline="true"/>
-                    <#input id="updateTime" name="修改时间" value="${item.updateTime}" underline="true"/>
+                    <#input id="createTime" name="创建时间" value="${item.createTime}" underline="true" type="text" clickFun="laydate({istime:true,format:'YYYY-MM-DD hh:mm:ss'})" />
+                    <#input id="updateTime" name="修改时间" value="${item.updateTime}" underline="true" type="text" clickFun="laydate({istime:true,format:'YYYY-MM-DD hh:mm:ss'})" />
                     <#text id="content" name="内容" value="${item.content}" underline="true"/>
                     <#input id="waitOnline" name="是否在线等。0：否，1：是" value="${item.waitOnline}" underline="true"/>
                     <#input id="status" name="状态。0：求助中，1：委托中，2：已完成，待买家确认，3：交易完成" value="${item.status}" underline="true"/>
@@ -44,4 +44,14 @@
     </div>
 </div>
 <script src="${ctxPath}/static/modular/system/issues/issues_info.js"></script>
+<script>
+    laydate.render({
+        elem: '#createTime'
+    });
+</script>
+<script>
+    laydate.render({
+        elem: '#updateTime'
+    });
+</script>
 @}

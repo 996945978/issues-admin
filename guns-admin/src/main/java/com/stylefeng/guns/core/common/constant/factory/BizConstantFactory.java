@@ -5,9 +5,7 @@ import com.stylefeng.guns.modular.system.dao.BUserMapper;
 import com.stylefeng.guns.modular.system.dao.SchoolMapper;
 import com.stylefeng.guns.modular.system.dao.TabMapper;
 import com.stylefeng.guns.modular.system.model.BUser;
-import com.stylefeng.guns.modular.system.model.enums.SexEnum;
-import com.stylefeng.guns.modular.system.model.enums.StopStatusEnum;
-import com.stylefeng.guns.modular.system.model.enums.StudentAuthEnum;
+import com.stylefeng.guns.modular.system.model.enums.*;
 import com.stylefeng.guns.modular.system.service.IBUserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.DependsOn;
@@ -52,12 +50,27 @@ public class BizConstantFactory implements IBizConstantFactory{
     }
 
     @Override
-    public Object getStudentAuthName(Integer studentAuth) {
+    public String getStudentAuthName(Integer studentAuth) {
         return StudentAuthEnum.valueOf(studentAuth);
     }
 
     @Override
-    public Object getStopStatus(Integer status) {
+    public String getStopStatus(Integer status) {
         return StopStatusEnum.valueOf(status);
+    }
+
+    @Override
+    public String getWaitOnLineValue(Integer waitOnline) {
+        return WaitOnlineEnum.valueOf(waitOnline);
+    }
+
+    @Override
+    public String getPaidValue(Integer isPaid) {
+        return PaidEnum.valueOf(isPaid);
+    }
+
+    @Override
+    public String getStatusValue(Integer status) {
+        return IssueStatusEnum.valueOf(status);
     }
 }

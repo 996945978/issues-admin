@@ -22,6 +22,6 @@ public class BUserWrapper extends BaseControllerWarpper{
         map.put("schoolName", BizConstantFactory.me().getSchoolNameById((Integer)map.get("schoolId")));
         map.put("sexValue", BizConstantFactory.me().getSexName((Integer)map.get("sex")));
         map.put("studentAuthValue",BizConstantFactory.me().getStudentAuthName((Integer)map.get("studentAuth")));
-        map.put("statusValue",BizConstantFactory.me().getStopStatus((Integer)map.get("status")));
+        map.put("powerStatusValue",BizConstantFactory.me().getStopStatus((Integer)map.get("powerStatus")));
     }
 }

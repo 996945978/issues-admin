@@ -37,6 +37,9 @@
       <include refid="Base_Column_List"/>
         from b_user as u
         <where>
+            <if test="id != null ">
+                AND u.id=#{id}
+            </if>
             <if test="createTimeL != null and createTimeL != ''">
                 AND u.create_time > #{createTimeL}
             </if>
@@ -52,6 +55,7 @@
             <if test="status != null ">
                 AND u.status=#{status}
             </if>
+
             <if test="schoolId != null ">
                 AND u.school_id=#{schoolId}
             </if>

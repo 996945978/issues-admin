@@ -7,6 +7,7 @@ import lombok.Data;
  */
 @Data
 public class GetBUserListDto {
+    private Integer id;
     private String name;
     private String createTimeL;
     private String createTimeR;
@@ -18,6 +19,5 @@ public class GetBUserListDto {
     private Integer mobile;
     private String dorm;
     private String studentNo;
-    private String studentAuth;
-
+    private Integer studentAuth;
 }
