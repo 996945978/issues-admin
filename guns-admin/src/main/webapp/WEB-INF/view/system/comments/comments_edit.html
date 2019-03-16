@@ -1,0 +1,65 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <div class="row">
+
+                <div class="col-sm-6 b-r">
+                    <input type="hidden" id="contentTypeValue" value="${item.contentType}" >
+                    <input type="hidden" id="statusValue" value="${item.status}" >
+                    <input type="hidden" id="ownTypeValue" value="${item.ownType}" >
+                    <input type="hidden" id="fromIdValue" value="${item.fromId}">
+                    <input type="hidden" id="toIdValue" value="${item.toId}">
+
+                    <#input id="id" name="id" value="${item.id}" underline="true" disabled="disabled"/>
+                    <#select id="contentType" name="类型" underline="true">
+                        <option value="0">好评</option>
+                        <option value="1">差评</option>
+                    </#select>
+                    <#text id="content" name="内容" value="${item.content}" underline="true"/>
+                    <#input id="createTime" name="创建时间" value="${item.createTime}" underline="true" type="text" clickFun="laydate({istime:true,format:'YYYY-MM-DD hh:mm:ss'})" />
+                    <#select id="status" name="状态" underline="true">
+                        <option value="0">禁用</option>
+                        <option value="1">正常</option>
+                    </#select>
+                </div>
+
+                <div class="col-sm-6">
+                    <#select id="ownType" name="评论类型" underline="true">
+                        <option value="0">求助评论（完成交易时）</option>
+                        <option value="1">技能评论（完成交易时）</option>
+                        <option value="2">广场求助评论</option>
+                    </#select>
+                    <#input id="ownId" name="所属类型外键，own_type是0，就是issue的外键" value="${item.ownId}" underline="true"/>
+                    <#select id="fromId" name="发送者" underline="true">
+                        @for (user in users){
+                        <option value="${user.id}">${user.name}</option>
+                        @}
+                    </#select>
+                    <#select id="toId" name="接受者" underline="true">
+                        @for (user in users){
+                        <option value="${user.id}">${user.name}</option>
+                        @}
+                    </#select>
+                    <#input id="agree" name="点赞" value="${item.agree}" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="CommentsInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="CommentsInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/comments/comments_info.js"></script>
+<script>
+    laydate.render({
+        elem: '#createTime'
+    });
+</script>
+@}
