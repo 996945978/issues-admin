@@ -6,8 +6,6 @@ import com.stylefeng.guns.modular.system.dao.SchoolMapper;
 import com.stylefeng.guns.modular.system.dao.TabMapper;
 import com.stylefeng.guns.modular.system.model.BUser;
 import com.stylefeng.guns.modular.system.model.enums.*;
-import com.stylefeng.guns.modular.system.service.IBUserService;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Component;
 
@@ -70,7 +68,17 @@ public class BizConstantFactory implements IBizConstantFactory{
     }
 
     @Override
-    public String getStatusValue(Integer status) {
+    public String getIssueStatusValue(Integer status) {
         return IssueStatusEnum.valueOf(status);
+    }
+
+    @Override
+    public String getCommentsOwnTypeValue(Integer tabId) {
+        return CommentsOwnTypeEnum.valueOf(tabId);
+    }
+
+    @Override
+    public String getCommentsContentTypeValue(Integer tabId) {
+        return CommentsContentTypeEnum.valueOf(tabId);
     }
 }

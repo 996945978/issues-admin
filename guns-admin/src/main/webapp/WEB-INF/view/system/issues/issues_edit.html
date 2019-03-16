@@ -14,6 +14,8 @@
                     <#input id="isPaid" name="是否支付，0：否，1：是" value="${item.isPaid}" />
                     <input type="hidden" id="schoolValue" value="${item.schoolId}">
                     <input type="hidden" id="tabValue" value="${item.tabId}">
+                    <input type="hidden" id="authorValue" value="${item.authorId}">
+                    <input type="hidden" id="solverValue" value="${item.solverId}">
                     <!--<textarea id="content" >${item.content}</textarea>-->
                 </div>
                 <div class="col-sm-6">
@@ -22,8 +24,17 @@
                         <option value="${school.id}">${school.name}</option>
                         @}
                     </#select>
-                    <#input id="authorId" name="发布人" value="${item.authorId}" underline="true"/>
-                    <#input id="solverId" name="解决人id" value="${item.solverId}" underline="true"/>
+                    <#select id="authorId" name="发布人" underline="true">
+                        @for (user in users){
+                        <option value="${user.id}">${user.name}</option>
+                        @}
+                    </#select>
+                    <#select id="solverId" name="解决人" underline="true">
+                        <option value=""></option>
+                        @for (user in users){
+                        <option value="${user.id}">${user.name}</option>
+                        @}
+                    </#select>
                     <#input id="powerStatus" name="0：冻结，1：正常" value="${item.powerStatus}" underline="true"/>
                     <#select id="tabId" name="标签" underline="true">
                         @for (tab in tabs) {

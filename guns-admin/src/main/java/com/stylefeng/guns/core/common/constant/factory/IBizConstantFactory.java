@@ -30,5 +30,9 @@ public interface IBizConstantFactory {
 
     String getPaidValue(Integer isPaid);
 
-    String getStatusValue(Integer status);
+    String getIssueStatusValue(Integer status);
+
+    String getCommentsOwnTypeValue(Integer tabId);
+
+    String getCommentsContentTypeValue(Integer tabId);
 }

@@ -24,7 +24,7 @@ Issues.initColumn = function () {
             {title: '支付', field: 'isPaidValue', visible: true, align: 'center', valign: 'middle'},
             {title: '学校', field: 'schoolName', visible: true, align: 'center', valign: 'middle'},
             {title: '发布人', field: 'userName', visible: true, align: 'center', valign: 'middle'},
-            {title: '解决人id', field: 'solverId', visible: true, align: 'center', valign: 'middle'},
+            {title: '解决人', field: 'solverName', visible: true, align: 'center', valign: 'middle'},
             {title: '状态', field: 'powerStatusValue', visible: true, align: 'center', valign: 'middle'},
             {title: '标签', field: 'tabName', visible: true, align: 'center', valign: 'middle'},
             {title: '支付凭证', field: 'paidCode', visible: true, align: 'center', valign: 'middle'},

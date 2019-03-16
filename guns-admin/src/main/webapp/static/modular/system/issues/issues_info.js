@@ -106,5 +106,7 @@ $(function() {
     //初始化所属学校
     $("#schoolId").val($("#schoolValue").val());
     $("#tabId").val($("#tabValue").val());
+    $("#authorId").val($("#authorValue").val());
+    $("#solverId").val($("#solverValue").val());
 
 });

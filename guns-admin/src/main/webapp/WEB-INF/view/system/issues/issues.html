@@ -46,10 +46,20 @@
                                 </#SelectCon>
                             </div>
                             <div class="col-sm-2">
-                                <#NameCon id="authorId" name="发布者" />
+                                <#SelectCon id="authorId" name="发布者" >
+                                    <option value="">全部</option>
+                                    @for (user in users){
+                                    <option value="${user.id}">${user.name}</option>
+                                    @}
+                                </#SelectCon>
                             </div>
                             <div class="col-sm-2">
-                                <#NameCon id="solverId" name="解决人" />
+                                <#SelectCon id="solverId" name="解决人" >
+                                    <option value="">全部</option>
+                                    @for (user in users){
+                                    <option value="${user.id}">${user.name}</option>
+                                    @}
+                                </#SelectCon>
                             </div>
                             <div class="col-sm-2">
                                 <#SelectCon id="powerStatus" name="安全状态" >

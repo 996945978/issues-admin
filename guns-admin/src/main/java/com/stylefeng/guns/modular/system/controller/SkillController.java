@@ -1,9 +1,11 @@
 package com.stylefeng.guns.modular.system.controller;
 
 import com.stylefeng.guns.core.base.controller.BaseController;
+import com.stylefeng.guns.modular.system.model.BUser;
 import com.stylefeng.guns.modular.system.model.School;
 import com.stylefeng.guns.modular.system.model.Tab;
 import com.stylefeng.guns.modular.system.model.dto.GetSkillListDto;
+import com.stylefeng.guns.modular.system.service.IBUserService;
 import com.stylefeng.guns.modular.system.service.ISchoolService;
 import com.stylefeng.guns.modular.system.service.ITabService;
 import com.stylefeng.guns.modular.system.warpper.SkillWrapper;
@@ -31,6 +33,8 @@ import java.util.Map;
 @RequestMapping("/skill")
 public class SkillController extends BaseController {
     @Autowired
+    IBUserService ibUserService;
+    @Autowired
     ISchoolService iSchoolService;
 
     @Autowired
@@ -48,6 +52,8 @@ public class SkillController extends BaseController {
     public String index(Model model) {
         List<School> schools = iSchoolService.selectNormalList();
         List<Tab> tabs = iTabService.selectList(null);
+        List<BUser> users = ibUserService.selectList(null);
+        model.addAttribute("users",users);
         model.addAttribute("schools",schools);
         model.addAttribute("tabs",tabs);
         return PREFIX + "skill.html";
@@ -60,6 +66,8 @@ public class SkillController extends BaseController {
     public String skillAdd(Model model) {
         List<School> schools = iSchoolService.selectNormalList();
         List<Tab> tabs = iTabService.selectList(null);
+        List<BUser> users = ibUserService.selectList(null);
+        model.addAttribute("users",users);
         model.addAttribute("schools",schools);
         model.addAttribute("tabs",tabs);
         return PREFIX + "skill_add.html";
@@ -73,6 +81,8 @@ public class SkillController extends BaseController {
         Skill skill = skillService.selectById(skillId);
         List<School> schools = iSchoolService.selectNormalList();
         List<Tab> tabs = iTabService.selectList(null);
+        List<BUser> users = ibUserService.selectList(null);
+        model.addAttribute("users",users);
         model.addAttribute("schools",schools);
         model.addAttribute("tabs",tabs);
         model.addAttribute("item",skill);

@@ -2,9 +2,8 @@ package com.stylefeng.guns.modular.system.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.stylefeng.guns.core.base.controller.BaseController;
-import com.stylefeng.guns.modular.system.model.GetIssueListRecDto;
-import com.stylefeng.guns.modular.system.model.School;
-import com.stylefeng.guns.modular.system.model.Tab;
+import com.stylefeng.guns.modular.system.model.*;
+import com.stylefeng.guns.modular.system.service.IBUserService;
 import com.stylefeng.guns.modular.system.service.ISchoolService;
 import com.stylefeng.guns.modular.system.service.ITabService;
 import com.stylefeng.guns.modular.system.warpper.IssueWrapper;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.stylefeng.guns.core.log.LogObjectHolder;
 import org.springframework.web.bind.annotation.RequestParam;
-import com.stylefeng.guns.modular.system.model.Issues;
 import com.stylefeng.guns.modular.system.service.IIssuesService;
 
 import java.util.List;
@@ -42,6 +40,9 @@ public class IssuesController extends BaseController {
     @Autowired
     private IIssuesService issuesService;
 
+    @Autowired
+    private IBUserService ibUserService;
+
     /**
      * 跳转到求助管理首页
      */
@@ -49,6 +50,8 @@ public class IssuesController extends BaseController {
     public String index(Model model) {
         List<School> schools = iSchoolService.selectNormalList();
         List<Tab> tabs = iTabService.selectList(null);
+        List<BUser> users = ibUserService.selectList(null);
+        model.addAttribute("users",users);
         model.addAttribute("schools",schools);
         model.addAttribute("tabs",tabs);
         return PREFIX + "issues.html";
@@ -61,6 +64,8 @@ public class IssuesController extends BaseController {
     public String issuesAdd(Model model) {
         List<School> schools = iSchoolService.selectNormalList();
         List<Tab> tabs = iTabService.selectList(null);
+        List<BUser> users = ibUserService.selectList(null);
+        model.addAttribute("users",users);
         model.addAttribute("schools",schools);
         model.addAttribute("tabs",tabs);
         return PREFIX + "issues_add.html";
@@ -74,6 +79,8 @@ public class IssuesController extends BaseController {
         Issues issues = issuesService.selectById(issuesId);
         List<School> schools = iSchoolService.selectNormalList();
         List<Tab> tabs = iTabService.selectList(null);
+        List<BUser> users = ibUserService.selectList(null);
+        model.addAttribute("users",users);
         model.addAttribute("schools",schools);
         model.addAttribute("tabs",tabs);
         model.addAttribute("item",issues);

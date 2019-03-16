@@ -16,7 +16,11 @@
                 </div>
 
                 <div class="col-sm-6">
-                    <#input id="authorId" name="发布者" underline="true"/>
+                    <#select id="authorId" name="发布者" underline="true">
+                        @for (user in users){
+                        <option value="${user.id}">${user.name}</option>
+                        @}
+                    </#select>
                     <#select id="tabId" name="标签" underline="true">
                         @for (tab in tabs) {
                         <option value="${tab.id}">${tab.name}</option>
