@@ -12,7 +12,6 @@
         <module>guns-admin</module>
         <module>guns-core</module>
         <module>guns-rest</module>
-        <module>guns-generator</module>
     </modules>
 
     <parent>
